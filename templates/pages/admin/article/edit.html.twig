@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'article – Administration{% endblock %}
+
+{% block body %}
+<main>
+    <section aria-label="Modification d'un article">
+        <header>
+            <h1>Modifier l'article : {{ article.title }}</h1>
+        </header>
+
+        {% include 'pages/admin/article/_form.html.twig' with { form: form, button_label: 'Mettre à jour' } %}
+    </section>
+</main>
+{% endblock %}

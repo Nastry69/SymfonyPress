@@ -1,0 +1,44 @@
+{% set currentRoute = app.request.attributes.get('_route') %}
+
+<header class="site-header">
+    <nav aria-label="Navigation principale">
+        <div class="nav-left">
+            {# Si un jour tu veux un logo / nom du site #}
+            {# <span class="site-logo">SymfonyPress</span> #}
+        </div>
+
+        <ul class="nav-links">
+            <li>
+                <a href="{{ path('home') }}"
+                   aria-current="{{ currentRoute == 'home' ? 'page' : null }}">
+                    Accueil
+                </a>
+            </li>
+
+            {% if app.user %}
+                <li>
+                    <a href="{{ path('admin_article_index') }}"
+                       aria-current="{{ currentRoute starts with 'admin_article_' ? 'page' : null }}">
+                        Back-office
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('app_logout') }}" class="logout-link">
+                        Déconnexion
+                    </a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('app_login') }}"
+                       aria-current="{{ currentRoute == 'app_login' ? 'page' : null }}">
+                        Connexion
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+
+        <button id="theme-toggle" type="button" class="theme-toggle">
+            🌙
+        </button>
+    </nav>
+</header>

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ category.name }} – SymfonyPress{% endblock %}
+
+{% block body %}
+<section aria-label="Catégorie d'articles">
+<header>
+        <h1>Catégorie : {{ category.name }}</h1>
+</header>
+    {% for article in articles %}
+        {% include 'components/article_card.html.twig' with { article: article } %}
+    {% else %}
+        <p role="alert">Aucun article dans cette catégorie.</p>
+    {% endfor %}
+
+</section>
+{% endblock %}

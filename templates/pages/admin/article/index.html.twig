@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration – Articles{% endblock %}
+
+{% block body %}
+<section aria-label="Liste des articles (admin)">
+    <header>
+        <h1>Gestion des articles</h1>
+        <p>
+            <a href="{{ path('admin_article_new') }}" class="btn-admin">Créer un nouvel article</a>
+        </p>
+    </header>
+
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <p role="alert">{{ message }}</p>
+        {% endfor %}
+    {% endfor %}
+
+    {% for article in articles %}
+        {% include 'components/article_card.html.twig' with { article: article } %}
+
+        <section>
+            <a href="{{ path('admin_article_edit', { id: article.id }) }}">Modifier</a>
+
+            <form method="post"
+                  action="{{ path('admin_article_delete', { id: article.id }) }}"
+                  style="display:inline"
+                  onsubmit="return confirm('Supprimer cet article ?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete_article_' ~ article.id) }}">
+                <button type="submit">Supprimer</button>
+            </form>
+        </section>
+        <hr>
+    {% else %}
+        <p role="alert">Aucun article pour le moment.</p>
+    {% endfor %}
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page introuvable – SymfonyPress{% endblock %}
+
+{% block body %}
+<main>
+    <section aria-label="Erreur 404">
+        <header>
+            <h1>Page introuvable</h1>
+            <p>La page que vous cherchez n’existe pas ou plus.</p>
+        </header>
+
+        <p>
+            Vérifiez l’adresse dans la barre d’URL, ou retournez à l’accueil.
+        </p>
+
+        <p>
+            <a href="{{ path('home') }}" class="btn">⬅️ Revenir à l’accueil</a>
+        </p>
+    </section>
+</main>
+{% endblock %}

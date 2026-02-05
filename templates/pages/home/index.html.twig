@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil – SymfonyPress{% endblock %}
+
+{% block body %}
+{% if categories is not empty %}
+        <section aria-label="Liste des catégories">
+            <h1>Catégories</h1>
+            <ul class="category-list">
+                {% for category in categories %}
+                    <li>
+                        <a href="{{ path('category_show', { slug: category.slug }) }}">{{ category.name }}</a> 
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    {% endif %}
+<section aria-label="Liste des articles récents">
+<h1>Listes des derniers articles</h1>
+    {% for article in articles %}
+        {% include 'components/article_card.html.twig' with { article: article } %}
+    {% else %}
+        <p role="alert">Aucun article pour le moment.</p>
+    {% endfor %}
+</section>
+{% endblock %}

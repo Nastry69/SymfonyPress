@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel article – Administration{% endblock %}
+
+{% block body %}
+<main>
+    <section aria-label="Création d'un article">
+        <header>
+            <h1>Créer un nouvel article</h1>
+        </header>
+
+        {% include 'pages/admin/article/_form.html.twig' with { form: form, button_label: 'Créer' } %}
+    </section>
+</main>
+{% endblock %}

@@ -1,3 +1,605 @@
+/* ============================
+   Thème light / dark global
+   ============================ */
+
+:root {
+    /* Couleurs de base – mode clair */
+    --bg-body: #d7d7dc;
+    --bg-surface: #ffffff;
+    --bg-soft: #f9fafb;
+    --border-soft: #e5e7eb;
+
+    --bg-color: #ede9e9;
+    --bg-footer: #f3f3f3;
+    --text-color: #111827;
+    --text-main: #111827;
+    --text-muted: #6b7280;
+
+    --border-color: #e5e7eb;
+    --card-bg: #ffffff;
+
+    --primary: #2563eb;
+    --primary-soft: #eff6ff;
+    --primary-text-on-color: #ffffff;
+
+    --danger: #b91c1c;
+    --radius-lg: 10px;
+    --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="dark"] {
+    /* Couleurs de base – mode sombre */
+    --bg-body: #020617;
+    --bg-surface: #020617;
+    --bg-soft: #020617;
+    --border-soft: #1f2937;
+
+    --bg-color: #020617;
+    --bg-footer: #020617;
+    --text-color: #f9fafb;
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+
+    --border-color: #1f2937;
+    --card-bg: #020617;
+
+    --primary: #3b82f6;
+    --primary-soft: #0b1120;
+
+    --shadow-soft: 0 10px 30px rgba(15, 23, 42, 0.5);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* ============================
+   Layout global
+   ============================ */
+
 body {
-    background-color: skyblue;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.site-layout {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.site-main {
+    flex: 1;
+    max-width: 960px;
+    margin: 2rem auto 3rem;
+    padding: 0 1.5rem;
+    width: 100%;
+}
+
+/* ============================
+   Header / Navigation
+   ============================ */
+
+/* Bandeau header */
+.site-header {
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Nav principale, peu importe les classes */
+nav[aria-label="Navigation principale"] {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    min-height: 64px;
+    gap: 1.5rem;
+}
+
+/* Liste des liens centrée */
+nav[aria-label="Navigation principale"] ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none; /* ⬅ enlève les puces */
+}
+
+nav[aria-label="Navigation principale"] li {
+    list-style: none;
+}
+
+/* Liens */
+nav[aria-label="Navigation principale"] a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 0.95rem;
+    position: relative;
+    padding-bottom: 0.2rem;
+}
+
+nav[aria-label="Navigation principale"] a[aria-current="page"]::after,
+nav[aria-label="Navigation principale"] a:hover::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--primary);
+}
+
+nav[aria-label="Navigation principale"] a:hover {
+    color: var(--primary);
+}
+
+/* Lien de déconnexion (optionnel si tu as .logout-link) */
+.logout-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.logout-link:hover {
+    color: var(--danger);
+    text-decoration: none;
+}
+
+/* Toggle thème à droite */
+#theme-toggle {
+    margin-left: auto;          /* pousse le bouton à droite */
+    background: none;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.4rem 0.7rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition:
+        background-color 0.15s ease,
+        opacity 0.15s ease,
+        transform 0.08s ease-out;
+}
+
+#theme-toggle:hover {
+    background-color: var(--border-color);
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    nav[aria-label="Navigation principale"] {
+        padding: 0.75rem 1rem;
+        gap: 0.75rem;
+    }
+
+    nav[aria-label="Navigation principale"] ul {
+        gap: 0.75rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+
+/* ============================
+   Footer
+   ============================ */
+
+.site-footer {
+    margin-top: 2rem;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    background-color: var(--bg-footer);
+    border-top: 1px solid var(--border-color);
+}
+
+.site-footer small {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* ============================
+   Liens / textes
+   ============================ */
+
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+section[aria-label],
+section > header {
+    margin-bottom: 1.5rem;
+}
+
+section > header h1,
+section > header h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1.4rem;
+}
+
+section > header p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ============================
+   Cards / Articles
+   ============================ */
+
+article,
+.card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.25rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+article header h1,
+article header h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.25rem;
+}
+
+article header h1 {
+    font-size: 1.5rem;
+}
+
+article header a {
+    color: var(--text-main);
+}
+
+article header a:hover {
+    color: var(--primary);
+}
+
+article p {
+    margin-top: 0.5rem;
+    line-height: 1.6;
+    font-size: 0.98rem;
+}
+
+article time {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+article header p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* ============================
+   Liste des catégories (chips)
+   ============================ */
+
+.category-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0 2rem;
+    padding: 0;
+    list-style: none;
+}
+
+.category-list li a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    background-color: var(--primary-soft);
+    color: var(--primary);
+    border: 1px solid var(--border-color);
+
+    transition:
+        background-color 0.15s ease,
+        color 0.15s ease,
+        border-color 0.15s ease,
+        transform 0.05s ease;
+}
+
+.category-list li a:hover {
+    background-color: var(--primary);
+    color: var(--primary-text-on-color);
+    border-color: var(--primary);
+    transform: translateY(-1px);
+}
+
+/* Dark mode – catégories */
+[data-theme="dark"] .category-list li a {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #93c5fd;
+    border-color: rgba(59, 130, 246, 0.35);
+}
+
+[data-theme="dark"] .category-list li a:hover {
+    background-color: var(--primary);
+    color: var(--primary-text-on-color);
+    border-color: var(--primary);
+}
+
+/* ============================
+   Messages / alertes
+   ============================ */
+
+[role="alert"],
+.alert {
+    background-color: var(--primary-soft);
+    border-left: 3px solid var(--primary);
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    margin: 0.5rem 0 1rem;
+    font-size: 0.9rem;
+}
+
+.alert-danger {
+    background-color: #fef2f2;
+    border-left-color: var(--danger);
+    color: #7f1d1d;
+}
+
+/* ============================
+   Formulaires (login, register, admin)
+   ============================ */
+
+form {
+    margin-top: 1rem;
+}
+
+form > div {
+    margin-bottom: 0.75rem;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+/* Inputs lisibles partout (light + dark) */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="file"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 0.5rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-soft);
+    font: inherit;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.25);
+    background-color: #ffffff;
+}
+
+::placeholder {
+    color: #6b7280;
+}
+
+input[type="checkbox"] {
+    margin-right: 0.4rem;
+}
+
+/* Conteneurs pour pages d'auth (login / inscription) */
+.auth-page {
+    max-width: 420px;
+    margin: 2.5rem auto;
+}
+
+.auth-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.75rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.auth-card h1 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    font-size: 1.3rem;
+}
+
+.auth-switch {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.auth-switch a {
+    font-weight: 500;
+}
+
+/* ============================
+   Boutons
+   ============================ */
+
+button,
+.btn,
+.btn-primary,
+.btn-admin {
+    display: inline-block;
+    border-radius: 999px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    background-color: var(--primary);
+    color: var(--primary-text-on-color);
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+    transition:
+        transform 0.08s ease-out,
+        box-shadow 0.08s ease-out,
+        background-color 0.08s ease-out;
+    text-decoration: none;
+}
+
+button:hover,
+.btn:hover,
+.btn-primary:hover,
+.btn-admin:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+    text-decoration: none;
+}
+
+button:active,
+.btn:active,
+.btn-primary:active,
+.btn-admin:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+button[type="submit"] {
+    margin-top: 0.5rem;
+}
+
+/* Admin: bouton d’action plus compact */
+.btn-admin {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+}
+
+/* Bouton de destruction (delete) */
+button[data-danger="true"],
+.btn-danger {
+    background-color: var(--danger);
+    border-color: var(--danger);
+    box-shadow: 0 6px 18px rgba(185, 28, 28, 0.25);
+}
+
+button[data-danger="true"]:hover,
+.btn-danger:hover {
+    background-color: #991b1b;
+    box-shadow: 0 10px 25px rgba(185, 28, 28, 0.3);
+}
+
+/* ============================
+   Pages admin (liste articles)
+   ============================ */
+
+section[aria-label*="admin"] article {
+    margin-bottom: 0.75rem;
+}
+
+section[aria-label*="admin"] hr {
+    border: none;
+    border-top: 1px dashed var(--border-soft);
+    margin: 0.5rem 0 1rem;
+}
+
+section[aria-label*="admin"] a {
+    font-size: 0.9rem;
+    margin-right: 0.75rem;
+}
+
+/* ============================
+   Pages d’erreur (403 / 404 / 500)
+   ============================ */
+
+.error-page {
+    max-width: 600px;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.error-card {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    padding: 2rem 2.5rem;
+    box-shadow: var(--shadow-soft);
+    border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.error-code {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.error-message {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+/* ============================
+   Responsive
+   ============================ */
+
+@media (max-width: 640px) {
+    .main-nav {
+        padding: 0.75rem 1rem;
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .nav-links {
+        gap: 0.75rem;
+        font-size: 0.9rem;
+        flex-wrap: wrap;
+    }
+
+    .site-main {
+        padding: 0 1rem;
+        margin-top: 1.5rem;
+    }
+
+    .site-footer {
+        padding: 0.75rem 1rem;
+    }
+
+    article,
+    .card {
+        padding: 1rem 1.1rem;
+    }
+
+    .auth-page {
+        margin-top: 2rem;
+    }
 }
