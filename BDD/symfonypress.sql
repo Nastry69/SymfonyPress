@@ -3,10 +3,6 @@
 --
 
 -- --------------------------------------------------------
-
---
--- Structure de la table `article`
---
 INSERT INTO `category` (`id`, `name`, `slug`) VALUES
 (1, 'Symfony', 'symfony'),
 (2, 'PHP', 'php'),
