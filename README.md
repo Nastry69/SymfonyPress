@@ -51,8 +51,6 @@ Il permet de consulter des articles, de les organiser par catégories, et de les
 
 ```bash
 git clone https://github.com/Nastry69/SymfonyPress.git
-
-```bash
 cd symfonypress 
 
 ---
@@ -63,17 +61,14 @@ Créer un fichier .env à partir du fichier .env.exemple
 
 Créer ensuite un fichier .env.test : 
 
-```bash
 KERNEL_CLASS='App\Kernel'
 APP_SECRET='$ecretf0rt3st'
 
-```bash
 Créer ensuite un fichier .env.dev : 
 APP_SECRET='$ecretAl3at0ire'
 
 Configurer ensuite la variable DATABASE_URL dans .env :
 
-```bash
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/symfonypress?serverVersion=8.0"
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/symfonypress?serverVersion=10.4.32-MariaDB&charset=utf8mb4"
 DATABASE_URL="postgresql://user:password@127.0.0.1:5432/symfonypress?serverVersion=16&charset=utf8"
@@ -90,21 +85,19 @@ symfonypress : nom de la base de données
 ---
 
 ### 3. Installer les dépendances
-```bash
 composer install
-```bash
 php bin/console asset-map:compile
 
 ### 4. Initialisation de la base de données
 
     - Créer la base de données avec la commande:
-```bash
+
     symfony console doctrine:database:create
 
     - Exécuter les migrations avec la commande:
-```bash
+
     symfony console doctrine:migrations:migrate
-```bash
+
     - Importer la Base de données depuis le dossier BDD
 
 ---
@@ -112,11 +105,11 @@ php bin/console asset-map:compile
 ### 5. Lancer l’application
 
 Avec Symfony CLI (recommandé) :
-```bash
+
 symfony serve:start
 
 Ou avec PHP :
-```bash
+
 php -S 127.0.0.1:8000 -t public
 
 Si il y a une erreur vérifier dans le dossier confi/packages/webpack_encore.yaml et remplace le build par assets sinon tout devrais fonctionner
