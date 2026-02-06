@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Article;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -21,6 +22,33 @@ class ArticleRepository extends ServiceEntityRepository
     return $this->createQueryBuilder('a')
         ->orderBy('a.createdAt', 'DESC')
         ->setMaxResults($limit)
+        ->getQuery()
+        ->getResult();
+}
+
+
+public function findPublishedByUserNameString(string $name, ?int $limit = null): array
+{
+    $qb = $this->createQueryBuilder('a')
+        ->join('a.name', 'u')                // a.name = relation vers User
+        ->andWhere('a.isPublished = true')
+        ->andWhere('u.name LIKE :name')      // filtre sur User::name (string)
+        ->setParameter('name', '%' . $name . '%')
+        ->orderBy('a.createdAt', 'DESC');
+
+    if ($limit !== null) {
+        $qb->setMaxResults($limit);
+    }
+
+    return $qb->getQuery()->getResult();
+}
+
+
+public function findAllPublished(): array
+{
+    return $this->createQueryBuilder('a')
+        ->andWhere('a.isPublished = true')
+        ->orderBy('a.createdAt', 'DESC')
         ->getQuery()
         ->getResult();
 }

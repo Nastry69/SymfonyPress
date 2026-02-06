@@ -15,6 +15,15 @@
 			<time datetime="{{ article.createdAt|date('d-m-Y') }}">
 				{{ article.createdAt|date('d/m/Y') }}
 			</time>
+			-
+		{% if article.user %}
+			par
+			{{ article.user.name }}
+		{% else %}
+			par Auteur inconnu
+		{% endif %}
+
+		•
 		</p>
             <a href="{{ path('category_show', { slug: article.category.slug }) }}">
                 {{ article.category.name }}

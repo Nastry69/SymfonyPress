@@ -50,7 +50,7 @@ class Article
 
     #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id', nullable: false)]
-    private ?User $user = null;
+    private ?User $name = null;
 
     #[ORM\Column(type: 'boolean')]
     private bool $isPublished = false;
@@ -119,20 +119,20 @@ class Article
     }
       public function getUser(): ?User
     {
-        return $this->user;
+        return $this->name;
     }
      public function setUser(?User $user): self
     {
-        $this->user = $user;
+        $this->name = $user;
         return $this;
     }
      public function getAuthor(): ?User
     {
-        return $this->user;
+        return $this->name;
     }
      public function setAuthor(?User $author): self
     {
-        $this->user = $author;
+        $this->name = $author;
         return $this;
     }
 
