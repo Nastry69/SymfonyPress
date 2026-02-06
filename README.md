@@ -25,7 +25,7 @@ Il permet de consulter des articles, de les organiser par catégories, et de les
 
 ## Stack technique
 
-- PHP 8.2+
+- PHP 8.4+
 - Symfony 8
 - Doctrine ORM
 - Twig
