@@ -112,7 +112,8 @@ Ou avec PHP :
 
 php -S 127.0.0.1:8000 -t public
 
-Si il y a une erreur vérifier dans le dossier confi/packages/webpack_encore.yaml et remplace le build par assets sinon tout devrais fonctionner
+Si il y a une erreur vérifier dans le dossier confi/packages/webpack_encore.yaml et remplace le
+build par assets sinon tout devrais fonctionner
 
 Comptes utilisateurs (démo)
 
