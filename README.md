@@ -55,12 +55,7 @@ cd symfonypress
 
 ---
 
-### 2. Installer les dépendances
-composer install
-php bin/console asset-map:compile
----
-
-### 3. Configuration de l’environnement
+### 2. Configuration de l’environnement
 
 Créer un fichier .env à partir du fichier .env.exemple 
 
@@ -89,15 +84,17 @@ symfonypress : nom de la base de données
 
 ---
 
+### 3. Installer les dépendances
+composer install
+php bin/console asset-map:compile
+
 ### 4. Initialisation de la base de données
 
-Lancer votre serveur puis : 
-    - Créer la base de données :
+    - Créer la base de données avec la commande:
 
     symfony console doctrine:database:create
 
-
-    - Exécuter les migrations :
+    - Exécuter les migrations avec la commande:
 
     symfony console doctrine:migrations:migrate
 
@@ -128,16 +125,14 @@ Administrateur :
 
     Rôle : ROLE_ADMIN
 
-USER 1 :
+USER1 :
     Email : user@gmail.com
 
     Mot de passe : Test123456@
 
     Rôle : ROLE_USER
 
-
-
-USER 2 :
+USER2 :
     Email : user2@exemple.com
 
     Mot de passe : TestTest@
