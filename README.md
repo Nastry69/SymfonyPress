@@ -192,20 +192,64 @@ ROLE_ADMIN > ROLE_USER
 ---
 
 ## Architecture
+
 src/
 ├── Controller/
 │   ├── Admin/
+│   │   ├── .gitignore
+│   │   └── ArticleController.php
 │   ├── ArticleController.php
 │   ├── CategoryController.php
-│   └── HomeController.php
+│   ├── HomeController.php
+│   ├── RegistrationController.php
+│   └── SecurityController.php
 ├── Entity/
+│   ├── .gitignore
+│   ├── Article.php
+│   ├── Category.php
+│   └── User.php
+├── Form/
+│   ├── ArticleType.php
+│   └── RegistrationFormType.php
 ├── Repository/
+│   ├── .gitignore
+│   ├── ArticleRepository.php
+│   ├── CategoryRepository.php
+│   └── UserRepository.php
 ├── Security/
+│   ├── LoginFormAuthenticator.php
+│   └── Kernel.php
+
 templates/
-├── base.html.twig
-├── layout/
-├── pages/
+├── bundles/
+│   └── TwigBundle/
+│       └── Exception/
+│           ├── error403.html.twig
+│           ├── error404.html.twig
+│           └── error500.html.twig
 ├── components/
+│   └── article_card.html.twig
+├── layout/
+│   ├── footer.html.twig
+│   └── header.html.twig
+├── pages/
+│   ├── admin/
+│   │   └── article/
+│   │       ├── _form.html.twig
+│   │       ├── edit.html.twig
+│   │       ├── index.html.twig
+│   │       └── new.html.twig
+│   ├── article/
+│   │   └── show.html.twig
+│   ├── category/
+│   │   └── show.html.twig
+│   ├── home/
+│   │   └── index.html.twig
+│   ├── registration/
+│   │   └── register.html.twig
+│   └── security/
+│       └── login.html.twig
+└── base.html.twig
 
 
 
