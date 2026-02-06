@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,16 +15,15 @@ final class HomeController extends AbstractController
     #[Route('/', name: 'home')]
     public function index(Request $request, ArticleRepository $articleRepository, CategoryRepository $categoryRepository): Response
     {
+        $searchedUserName = $request->query->get('user');
 
-        $userName = $request->query->get('user');
-
-    if ($userName) {
-        // Articles publiés de l'utilisateur connecté
-        $articles = $articleRepository->findPublishedByUserNameString($userName);
-    } else {
-        // Tous les articles publiés (ou [] si tu veux rien pour les non-connectés)
-        $articles = $articleRepository->findAllPublished();
-    }
+        if (!empty($searchedUserName)) {
+            // 🟡 Filtre par nom d'auteur (string)
+            $articles = $articleRepository->findPublishedByUserNameString($searchedUserName);
+        } else {
+            // 🟢 Pas de filtre → tous les articles publiés
+            $articles = $articleRepository->findAllPublished();
+        }
         $categories = $categoryRepository -> findAll();
 
         return $this->render('pages/home/index.html.twig', [

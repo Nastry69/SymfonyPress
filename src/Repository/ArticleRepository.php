@@ -27,12 +27,27 @@ class ArticleRepository extends ServiceEntityRepository
 }
 
 
+public function findPublishedByUserName(User $user, ?int $limit = null): array
+{
+    $qb = $this->createQueryBuilder('a')
+        ->andWhere('a.user = :user')      // 👈 propriété Doctrine = name
+        ->andWhere('a.isPublished = true')
+        ->setParameter('user', $user)
+        ->orderBy('a.createdAt', 'DESC');
+
+    if ($limit !== null) {
+        $qb->setMaxResults($limit);
+    }
+
+    return $qb->getQuery()->getResult();
+}
+
 public function findPublishedByUserNameString(string $name, ?int $limit = null): array
 {
     $qb = $this->createQueryBuilder('a')
-        ->join('a.name', 'u')                // a.name = relation vers User
+        ->join('a.user', 'u')                
         ->andWhere('a.isPublished = true')
-        ->andWhere('u.name LIKE :name')      // filtre sur User::name (string)
+        ->andWhere('u.name LIKE :name')      
         ->setParameter('name', '%' . $name . '%')
         ->orderBy('a.createdAt', 'DESC');
 
