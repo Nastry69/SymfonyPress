@@ -1,27 +1,32 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Erreur – Symfony Press{% endblock %}
+{% block title %}Erreur – SymfonyPress
+{% endblock %}
 
 {% block body %}
-<section aria-label="Erreur serveur">
-    <article>
-        <header>
-            <h1>Une erreur est survenue</h1>
-            {% if status_code is defined %}
-                <p>Code erreur&nbsp;: {{ status_code }} – {{ status_text|default('Erreur') }}</p>
-            {% endif %}
-        </header>
+	<section aria-label="Erreur serveur">
+		<article>
+			<header>
+				<h1>Une erreur est survenue</h1>
+				{% if status_code is defined %}
+					<p>Code erreur&nbsp;:
+						{{ status_code }}
+						–
+						{{ status_text|default('Erreur') }}</p>
+				{% endif %}
+			</header>
 
-        <p>
-            Un problème est survenu lors du traitement de votre demande.
-            Si le problème persiste, réessayez plus tard.
-        </p>
+			<p>
+				Un problème est survenu lors du traitement de votre demande.
+				            Si le problème persiste, réessayez plus tard.
+			</p>
 
-        <p>
-            <a href="{{ path('home') }}" class="btn">
-                ⬅️ Retour à l’accueil
-            </a>
-        </p>
-    </article>
-</section>
+			<p>
+				<a href="{{ path('home') }}" class="btn">
+					⬅️ Retour à l’accueil
+				</a>
+			</p>
+		</article>
+	</section>
 {% endblock %}
+

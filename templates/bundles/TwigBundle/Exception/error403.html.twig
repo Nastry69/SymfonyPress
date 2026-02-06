@@ -1,38 +1,40 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accès refusé – Symfony Press{% endblock %}
+{% block title %}Accès refusé – SymfonyPress
+{% endblock %}
 
 {% block body %}
-<main>
-	<section aria-label="Erreur 403">
-    <article>
-		<header>
-			<h1>Accès refusé (403)</h1>
-			<p>Vous n’avez pas l’autorisation d’accéder à cette page.</p>
-		</header>
-		{% if app.user %}
-			<p>
-				Vous êtes connecté·e en tant que
-				<strong>{{ app.user.userIdentifier }}</strong>.
-				Si vous pensez qu’il s’agit d’une erreur, contactez un administrateur.
-			</p>
-			<p>
-				<a href="{{ path('home') }}" class="btn">
-					⬅️ Retour à l’accueil
-				</a>
-			</p>
-		{% else %}
-			<p>
-				Vous devez être connecté·e pour accéder à cette ressource.
-			</p>
-			<p>
-				<a href="{{ path('app_login') }}" class="btn">
-					Se connecter
-				</a>
-			</p>
-		{% endif %}
-	</article>
+	<main>
+		<section aria-label="Erreur 403">
+			<article>
+				<header>
+					<h1>Accès refusé (403)</h1>
+					<p>Vous n’avez pas l’autorisation d’accéder à cette page.</p>
+				</header>
+				{% if app.user %}
+					<p>
+						Vous êtes connecté·e en tant que
+						<strong>{{ app.user.name }}</strong>.
+											Si vous pensez qu’il s’agit d’une erreur, contactez un administrateur.
+					</p>
+					<p>
+						<a href="{{ path('home') }}" class="btn">
+							⬅️ Retour à l’accueil
+						</a>
+					</p>
+				{% else %}
+					<p>
+						Vous devez être connecté·e pour accéder à cette ressource.
+					</p>
+					<p>
+						<a href="{{ path('app_login') }}" class="btn">
+							Se connecter
+						</a>
+					</p>
+				{% endif %}
+			</article>
 
-</section></main>
+		</section>
+	</main>
 
 {% endblock %}
