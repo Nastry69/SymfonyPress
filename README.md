@@ -86,7 +86,6 @@ symfonypress : nom de la base de données
 
 ### 3. Installer les dépendances
 composer install
-php bin/console asset-map:compile
 
 ### 4. Initialisation de la base de données
 
