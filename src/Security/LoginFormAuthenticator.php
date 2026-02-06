@@ -49,13 +49,10 @@ class LoginFormAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
-        // Si l'utilisateur était redirigé vers une page protégée avant login,
-        // on le renvoie là où il voulait aller.
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
-        // Sinon, redirection par défaut (tu peux mettre 'home' si tu préfères)
+        // Redirection sur /admin/article
         return new RedirectResponse($this->urlGenerator->generate('admin_article_index'));
     }
 

@@ -158,7 +158,7 @@ nav[aria-label="Navigation principale"] a:hover {
 
 /* Toggle thème à droite */
 #theme-toggle {
-    margin-left: auto;          /* pousse le bouton à droite */
+    margin-left: auto;
     background: none;
     border: 1px solid var(--border-color);
     color: var(--text-color);

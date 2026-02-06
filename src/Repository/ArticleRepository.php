@@ -30,7 +30,7 @@ class ArticleRepository extends ServiceEntityRepository
 public function findPublishedByUserName(User $user, ?int $limit = null): array
 {
     $qb = $this->createQueryBuilder('a')
-        ->andWhere('a.user = :user')      // 👈 propriété Doctrine = name
+        ->andWhere('a.user = :user')
         ->andWhere('a.isPublished = true')
         ->setParameter('user', $user)
         ->orderBy('a.createdAt', 'DESC');

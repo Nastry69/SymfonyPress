@@ -18,10 +18,10 @@ final class HomeController extends AbstractController
         $searchedUserName = $request->query->get('user');
 
         if (!empty($searchedUserName)) {
-            // 🟡 Filtre par nom d'auteur (string)
+            // Filtre par nom d'auteur
             $articles = $articleRepository->findPublishedByUserNameString($searchedUserName);
         } else {
-            // 🟢 Pas de filtre → tous les articles publiés
+            // Pas de filtre = tous les articles publiés
             $articles = $articleRepository->findAllPublished();
         }
         $categories = $categoryRepository -> findAll();
