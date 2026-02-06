@@ -57,7 +57,7 @@ cd symfonypress
 
 ### 2. Installer les dépendances
 composer install
-
+php bin/console asset-map:compile
 ---
 
 ### 3. Configuration de l’environnement
@@ -69,6 +69,8 @@ Créer ensuite un fichier .env.test :
 KERNEL_CLASS='App\Kernel'
 APP_SECRET='$ecretf0rt3st'
 
+Créer ensuite un fichier .env.dev : 
+APP_SECRET='$ecretAl3at0ire'
 
 Configurer ensuite la variable DATABASE_URL dans .env :
 
@@ -89,16 +91,17 @@ symfonypress : nom de la base de données
 
 ### 4. Initialisation de la base de données
 
-Créer la base de données :
+Lancer votre serveur puis : 
+    - Créer la base de données :
 
-symfony console doctrine:database:create
+    symfony console doctrine:database:create
 
 
-Exécuter les migrations :
+    - Exécuter les migrations :
 
-symfony console doctrine:migrations:migrate
+    symfony console doctrine:migrations:migrate
 
-Importer la Base de données depuis le dossier BDD
+    - Importer la Base de données depuis le dossier BDD
 
 ---
 
@@ -112,7 +115,7 @@ Ou avec PHP :
 
 php -S 127.0.0.1:8000 -t public
 
-Si il y a une erreur vérifier dans le dossier confi/packages/webpack_encore.yaml et remplace le build par assets
+Si il y a une erreur vérifier dans le dossier confi/packages/webpack_encore.yaml et remplace le build par assets sinon tout devrais fonctionner
 
 Comptes utilisateurs (démo)
 

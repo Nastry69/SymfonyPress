@@ -16,7 +16,7 @@ INSERT INTO `category` (`id`, `name`, `slug`) VALUES
 
 -- --------------------------------------------------------
 INSERT INTO `user` (`id`, `email`, `roles`, `password`, `name`) VALUES
-(1, 'admin@exemple.fr', '[]', '$2y$13$VI25uaQD30MeN4FRLqRPQOYI4yVoXEn7iG4LSlYVEs77nhM4w93L2', 'Admin'),
+(1, 'admin@exemple.fr', '["ROLE_ADMIN"]', '$2y$13$VI25uaQD30MeN4FRLqRPQOYI4yVoXEn7iG4LSlYVEs77nhM4w93L2', 'Admin'),
 (2, 'user@gmail.com', '[]', '$2y$13$jhKQCAZEKKyRvoFp.0jnoOyHEp.yJgjHFdtZWa6FVobkKeD8Qq7m6', 'User1'),
 (3, 'user2@exemple.com', '[]', '$2y$13$.bfSfi0bBgL9DN/l4b/XiOsJfZSQQmPb4Vi8UWfRboRggYVmDMn22', 'User2');
 
