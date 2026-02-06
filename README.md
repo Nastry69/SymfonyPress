@@ -62,12 +62,15 @@ composer install
 
 ### 3. Configuration de l’environnement
 
-Créer un fichier .env à partir du fichier .env :
+Créer un fichier .env à partir du fichier .env.exemple 
 
-cp .env .env.local
+Créer ensuite un fichier .env.test : 
+
+KERNEL_CLASS='App\Kernel'
+APP_SECRET='$ecretf0rt3st'
 
 
-Configurer ensuite la variable DATABASE_URL dans .env.local :
+Configurer ensuite la variable DATABASE_URL dans .env :
 
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/symfonypress?serverVersion=8.0"
 DATABASE_URL="mysql://user:password@127.0.0.1:3306/symfonypress?serverVersion=10.4.32-MariaDB&charset=utf8mb4"
